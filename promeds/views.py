@@ -334,28 +334,28 @@ def historypage(request):
     return render(request,'promeds/history.html',{'bills':bills,'bills1':bills1 ,'medss':medss,'med':med,'tabletss':tabletss,'tab':tab,'app':app,})
 
 def deleteorder(request,bill_id,order_id):
-    order1 = orderTab.objects.get(pk=order_id)
-    time = datetime.datetime.utcnow().replace(tzinfo=pytz.UTC)
-    c = time - order1.order_date
-    if c < datetime.timedelta(days=1):
+        order1 = orderTab.objects.get(pk=order_id)
+        time = datetime.datetime.utcnow().replace(tzinfo=pytz.UTC)
+        c = time - order1.order_date
+        if c < datetime.timedelta(days=1):
 
-        bill1 = bill.objects.get(pk = bill_id)
-        bill1.orders.remove(order_id)
+            bill1 = bill.objects.get(pk = bill_id)
+            bill1.orders.remove(order_id)
 
-        bill1.totalprice = bill1.totalprice - order1.total_price
-        bill1.save()
-        value=1
+            bill1.totalprice = bill1.totalprice - order1.total_price
+            bill1.save()
+            value=1
 
-    else:
-        value=2
-	
-	bills = bill.objects.filter(userr=request.user)
-    bills1 = billmed.objects.filter(users=request.user)
-    medss = order.objects.filter(User_name=request.user)
-    med = Medicines.objects.all()
-    tabletss = orderTab.objects.filter(User_name=request.user)
-    tab = Tablets.objects.all()
-    return render(request, 'promeds/history.html',{'bills': bills, 'bills1': bills1, 'medss': medss, 'med': med, 'tabletss': tabletss, 'tab': tab ,'value':value})
+        else:
+            value=2
+
+        bills = bill.objects.filter(userr=request.user)
+        bills1 = billmed.objects.filter(users=request.user)
+        medss = order.objects.filter(User_name=request.user)
+        med = Medicines.objects.all()
+        tabletss = orderTab.objects.filter(User_name=request.user)
+        tab = Tablets.objects.all()
+        return render(request, 'promeds/history.html',{'bills': bills, 'bills1': bills1, 'medss': medss, 'med': med, 'tabletss': tabletss, 'tab': tab ,'value':value})
 
 
 def deleteorders(request,bill_id,order_id):
@@ -381,7 +381,8 @@ def deleteorders(request,bill_id,order_id):
     med = Medicines.objects.all()
     tabletss = orderTab.objects.filter(User_name=request.user)
     tab = Tablets.objects.all()
-    return render(request, 'promeds/history.html',{'app':app,'bills': bills, 'bills1': bills1, 'medss': medss, 'med': med, 'tabletss': tabletss, 'tab': tab,'value':value})
+    app = appointment.objects.filter(User_name=request.user)
+    return render(request, 'promeds/history.html',{'app': app,'bills': bills, 'bills1': bills1, 'medss': medss, 'med': med, 'tabletss': tabletss, 'tab': tab,'value':value})
 
 def deleteorder_test(request,test_id):
     app=appointment.objects.get(pk=test_id)
@@ -409,8 +410,7 @@ def deleteorder_test(request,test_id):
     med = Medicines.objects.all()
     tabletss = orderTab.objects.filter(User_name=request.user)
     tab = Tablets.objects.all()
-    
-	return render(request,'promeds/history.html',{'bills': bills, 'bills1': bills1, 'medss': medss, 'med': med, 'tabletss': tabletss, 'tab': tab,'value':value,'app':app})
+    return render(request,'promeds/history.html',{'bills': bills, 'bills1': bills1, 'medss': medss, 'med': med, 'tabletss': tabletss, 'tab': tab,'value':value,'app':app})
 
 def deletetest(request,test1_id):
     ctest=checktest.objects.filter(User_name=request.user).filter(test_id = test1_id)
