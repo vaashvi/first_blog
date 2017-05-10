@@ -1,41 +1,25 @@
 import pytz as pytz
-from django.http
-import HttpResponse, HttpResponseRedirect
-from django.shortcuts
-import render, redirect, render_to_response
-from django.contrib.auth
-import authenticate, logout
-from django.contrib.auth
-import login as auth_login
-from django.views
-import generic
-from django.views.generic
-import View# from.forms
-import AddCartForm# from registration.forms
-import User
-from django.core.mail
-import EmailMessage
+from django.http import HttpResponse,HttpResponseRedirect
+from django.shortcuts import render,redirect,render_to_response
+from django.contrib.auth import authenticate,logout
+from django.contrib.auth import login as auth_login
+from django.views import generic
+from django.views.generic import View
+#from .forms import AddCartForm
+#from registration.forms import User
+from django.core.mail import EmailMessage
 
-from promeds
-import forms
-from.models
-import order, Tablets, orderTab, bill, billmed, checktest, appointment, UserProfile, UserShippingDetails
-from django.utils
-import timezone
-from promeds.models
-import Medicines, category, test
-from.forms
-import UserForm
-from django.template
-import RequestContext
-from django.core.urlresolvers
-import reverse
-from django.utils
-import timezone
+from promeds import forms
+from .models import order, Tablets,orderTab, bill,billmed,checktest,appointment, UserProfile, UserShippingDetails
+from django.utils import timezone
+from promeds.models import Medicines,category,test
+from .forms import UserForm
+from django.template import RequestContext
+from django.core.urlresolvers import reverse
+from django.utils import timezone
 import datetime
 import pytz
-from.forms
-import UserForm, UserProfileForm
+from .forms import UserForm,UserProfileForm
 
 class UserFormView(View):
   form_class = UserForm
