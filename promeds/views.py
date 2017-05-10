@@ -17,7 +17,6 @@ from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.utils import timezone
 import datetime
-import pytz
 from .forms import UserForm,UserProfileForm
 
 class UserFormView(View):
