@@ -4,7 +4,7 @@ from promeds.views import menupage, subcategorypage, addtocartpage
 from . import views
 
 
-import promeds.views
+#import promeds.views
 
 urlpatterns = [
 url(r'^myprofile/$', views.ProfileView, name='profile'),
