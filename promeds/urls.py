@@ -2,7 +2,6 @@ from django.conf.urls import url,handler404
 
 from promeds.views import menupage, subcategorypage, addtocartpage
 from . import views
-from django.conf.urls import patterns , url
 
 #import promeds.views
 
