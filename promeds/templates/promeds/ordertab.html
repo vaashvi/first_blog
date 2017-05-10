@@ -1,0 +1,46 @@
+{% extends 'promeds/base_template.html' %}
+{% block styles %}
+    .clear1 {
+    clear: both;
+    height: 10px;
+     background: #25b7c4;
+    background: linear-gradient(to right, #25c481, #25b7c4);
+    font-family: 'Roboto', sans-serif;
+
+}
+{% endblock %}
+{% block body1 %}
+
+<div class="clear1"></div>
+<div class="clear1"></div>
+<div class="clear1"></div>
+<div class="container-fluid">
+<div class="col-sm-3"></div>
+<div class="col-sm-6">
+<div class="w3-example" style="position:relative;background-color:#f2f2f2">
+{% if all_tablets %}
+<h1>List of Tablets</h1>
+  <div class="w3-container">
+
+    <p>
+      <ul class="w3-ul w3-card-4" style="width: 100%">
+    {% for tablet in all_tablets %}
+
+    <li><a href={%  url 'detailTablet'   tablet.id  %}>{{ tablet.tab_name}}</a> </li>
+    {% endfor %}
+    </ul>
+     </p>
+    </div>
+
+{% else %}
+    <h3>No tabs</h3>
+
+{% endif %}
+
+<p>Copyright © 2016 Promeds Marketplace Limited.<br>
+All rights Reserved
+</div>
+</div>
+</div>
+<div class="col-sm-3"></div>
+{% endblock %}

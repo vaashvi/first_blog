@@ -1,0 +1,180 @@
+{% extends 'promeds/base_template.html' %}
+{% block styles %}
+    #clear1 {
+    clear: both;
+    height: 40px;
+}
+    #app{
+            font-size: 30px;
+    font-family:Calibri;
+
+    }
+    #result ,#deal,#result1{
+     font-size: 30px; font-family:Calibri;
+     background-color: #00BFA5
+;
+
+
+    }
+
+{% endblock %}
+{% block body1 %}
+
+        <script type="text/javascript">
+
+function myFunction(browser) {
+    document.getElementById("result").value = browser;
+}
+function myFunction1(browser) {
+    document.getElementById("deal").value = browser;
+}
+    function myfun(){
+    var x=document.getElementById("date1").value
+    document.getElementById("result1").value = x;
+
+
+}
+
+        function timeselect()
+        {
+            var lab1 = document.getElementById("1").checked;
+            var y;
+             if (!lab1)
+             {
+                 document.getElementById("2").checked = false;
+                 return alert("Please select the laboratory");
+             }
+              elseif(document.getElementById("2").checked)
+              {
+                 var value1 = document.getElementsById("2").value;
+                   y= document.getElementById("2").value;
+                 document.getElementById("demo").innerHTML = y;
+                  return alert (value1);
+              }
+        }
+
+
+    </script>
+    <div xmlns="http://www.w3.org/1999/html">
+        <div class="col-sm-2">
+</div>
+
+<div class="container-fluid">
+     <form id='appointment' method="POST" action="{% url 'subtest' %}" role="form">{% csrf_token %}
+      <div class="col-sm-8">
+
+<div id="clear1"></div>
+
+    <div id="accordion" role="tablist" aria-multiselectable="false">
+<div class="row">
+        <div class="col-sm-6">
+ <label id="app">Step 1:
+</label>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#selectlab" aria-expanded="true"  aria-controls="collapseOne">
+          Select laboratory
+        </a>
+      </h4>
+    </div>
+    <div id="selectlab" class="panel-collapse collapse in,accordion-body collapse " role="tabpanel" aria-labelledby="headingOne">
+       <form action="" required>
+           &nbsp&nbsp&nbsp<input type="radio" name="browser" id="1" onclick="myFunction(this.value)" value=" Ambani"> Ambani<br>
+           &nbsp&nbsp&nbsp<input type="radio" name="browser" id="1" onclick="myFunction(this.value)" value=" Cooper"> Cooper<br>
+           &nbsp&nbsp&nbsp<input type="radio" name="browser" id="1" onclick="myFunction(this.value)" value=" Nandani"> Nandani<br>
+           &nbsp&nbsp&nbsp<input type="radio" name="browser" id="1" onclick="myFunction(this.value)" value=" Jariwala"> Jariwala<br>
+           &nbsp&nbsp&nbsp<input type="radio" name="browser" id="1" onclick="myFunction(this.value)" value=" Lilavati"> Lilavati<br><br>
+
+        </form>
+
+
+
+      </div></div>
+    </div>
+        <div class="col-sm-6">
+            <br>
+            <br>
+             <input type="text"  placeholder="Selected laboratory" id="result" name="labbook" required >
+        </div>
+    </div>
+<div class="row">
+        <div class="col-sm-6">
+
+        <label id="app">Step2:</label>
+
+        <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingtwo">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#selectdate" aria-expanded="true"  aria-controls="collapseOne">
+          Select Date
+        </a>
+      </h4>
+    </div>
+    <div id="selectdate" class="panel-collapse collapse in,accordion-body collapse " role="tabpanel" aria-labelledby="headingtwo">
+        	<div class="input-group registration-date-time">
+            		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+        <input type="date"  id="date1"  name="date" ><br></div>
+        <button role="button" type="button" onclick="myfun()">Select</button>
+
+   </div>
+  </div>
+</div>
+    <div class="col-sm-6">
+        <br>
+        <br>
+        <input type="text" placeholder="Selected Date" id="result1" name="datebook" required>
+    </div>
+    </div>
+<div class="row">
+        <div class="col-sm-6">
+
+<label id="app">Step 3:
+</label>
+        <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingthree">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#selecttime" aria-expanded="true"  aria-controls="collapseOne">
+          Select Slot
+        </a>
+      </h4>
+    </div>
+    <div id="selecttime" class="panel-collapse collapse in,accordion-body collapse " role="tabpanel" aria-labelledby="headingthree">
+
+        <form action="">
+<label>Morning Slots </label><br>
+            &nbsp&nbsp&nbsp <input type="radio" name="t" id="2" onclick="myFunction1(this.value)" value="8-9">8-9<br>
+            &nbsp&nbsp&nbsp <input type="radio" name="t" id="2" onclick="myFunction1(this.value)" value="9-10">9-10<br>
+            &nbsp&nbsp&nbsp <input type="radio" name="t" id="2" onclick="myFunction1(this.value)" value="10-11">10-11<br>
+            <label>Evening Slots </label><br>
+            &nbsp&nbsp&nbsp <input type="radio" name="t" id="2" onclick="myFunction1(this.value)" value="5-6">5-6<br>
+            &nbsp&nbsp&nbsp <input type="radio" name="t" id="2" onclick="myFunction1(this.value)" value="6-7">6-7<br>
+            &nbsp&nbsp&nbsp <input type="radio" name="t" id="2" onclick="myFunction1(this.value)" value="7-8">7-8<br>
+
+
+
+        </form>
+    </div>
+
+  </div>
+</div>
+    <div class="col-sm-6">
+        <br>
+        <br>
+        <input type="text" placeholder="Selected TimeSlot" id="deal" name="timebook" required>
+    </div>
+    </div>
+        </div>
+<input class="btn btn-info box" type="submit" style="align:center" value="Book Appointment"></a>
+
+          </div>
+
+        </form>
+
+</div>
+              <div class="col-sm-2">
+</div>
+</div>
+
+{% endblock %}

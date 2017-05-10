@@ -1,0 +1,203 @@
+{% extends 'promeds/base_template.html' %}
+{% block styles %}
+.clear1 {
+    clear: both;
+    height: 10px;
+}
+
+    .fancybox-opened {
+    z-index: 8030;
+}
+
+
+.fancybox-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 8020;
+}
+
+.fancybox-image, .fancybox-inner, .fancybox-nav, .fancybox-nav span, .fancybox-outer, .fancybox-skin, .fancybox-tmp, .fancybox-wrap, .fancybox-wrap iframe, .fancybox-wrap object {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: top;
+}
+div {
+    display: block;
+}
+.fancybox-skin {
+    position: relative;
+    background: #ADFF2F;
+    color: #000;
+    text-shadow: none;
+    border-radius: 4px;
+    border: 2px solid #00b6c3;
+}
+{% endblock %}
+
+{% block body1 %}
+    <div class="clear1"></div>
+
+
+
+    {% if value == 3 %}
+
+      <center>
+    <div class="fancybox-overlay fancybox-overlay-fixed opa " style="width: auto; height: auto; display: block; background: rgba(255,255,255,.5);">
+	<div class="fancybox-wrap fancybox-desktop fancybox-type-inline fancybox-opened" tabindex="-1" style="width: 576px; height: auto; position: absolute; top:280px; left: 430px; opacity: 1; overflow: visible;">
+	<div class="fancybox-skin" style="padding: 0px; width: auto; height: 150px;background:#9b9ccc ">
+		<div class="fancybox-outer">
+			<div class="fancybox-inner" style="overflow: auto; width: 572px; height: 100px;">
+				<div id="addtocart_confirmation" class="billing_modify_place_order" style="">
+									<div id="phar">
+										<p align="center">
+											<span id="lblpopupbrand">OOPS Sorry!! The item {{ tablet.tab_name }} is already in the cart</span>
+										</p>
+										<div class="clear1"></div>
+										<div class="floatl"><a href="{% url 'ordermedicines' %}">Continue shopping </a></div>
+										<div class="floatr"><a href="{% url 'shippingdetails' %}">checkout</a></div>
+									</div>
+									<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+    </div>
+    </center>
+
+    {% endif %}
+  {% if value == 2 %}
+    <center>
+    <div class="fancybox-overlay fancybox-overlay-fixed opa " style="width: auto; height: auto; display: block; background: rgba(255,255,255,.5);">
+	<div class="fancybox-wrap fancybox-desktop fancybox-type-inline fancybox-opened" tabindex="-1" style="width: 576px; height: auto; position: absolute; top:280px; left: 430px; opacity: 1; overflow: visible;">
+	<div class="fancybox-skin" style="padding: 0px; width: auto; height: 150px;background:#9b9ccc ">
+		<div class="fancybox-outer">
+			<div class="fancybox-inner" style="overflow: auto; width: 572px; height: 100px;">
+				<div id="addtocart_confirmation" class="billing_modify_place_order" style="">
+									<div id="phar">
+										<p align="center">
+											<span id="lblpopupbrand">{{ tablet.tab_name }}  was successfully added to your shopping cart.</span>
+										</p>
+										<div class="clear1"></div>
+										<div class="floatl"><a href="{% url 'ordermedicines' %}">Continue shopping </a></div>
+										<div class="floatr"><a href="{% url 'shippingdetails' %}">checkout</a></div>
+									</div>
+									<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+    </div>
+    </center>
+    {% endif %}
+
+
+    <div class="clear1"></div>
+    <div class="clear1"></div>
+      {% if value == 2 %}
+<div class="container-fluid" style="opacity: 0.3">
+    {% elif value == 1 %}
+        <div class="container-fluid">
+    {% else %}
+          <div class="container-fluid">
+
+    {% endif %}
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
+    <div class="w3-container w3-center" style="position:relative;">
+        <div class="w3-card w3-white">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>{{ tablet.tab_name }}</strong></div>
+                    <div class="panel-body" style="background-color: transparent">
+                        <div class="col-sm-6">
+                            <label>PRICE:</label>
+                            <div>{{ tablet.tab_price}}</div><br>
+                            <label>MANUFACTURER:</label>
+                            <div>{{ tablet.tab_manufacturer}}</div><br><br>
+                            <label>SIDE EFFECTS:</label>
+                            <div>{{ tablet.tab_sideeff}}</div><br><br>
+                        </div>
+                        <div class="col-sm-6">
+                             <form id="quant_form" method="POST" action="{% url 'detailTablet' tablet.id %}">{% csrf_token %}
+                                 <div class="clear1"></div>
+                                 <div class="clear1"></div>
+                                 <label>QUANTITY</label>
+                                 <input type="number" value="quantity" min=1 name="quantity"><br>
+                                 <input type="hidden" name="order_date"><br>
+                                 <div class="clear1"></div>
+                                 <div class="clear1"></div>
+                                 <div >
+                                     <span class="glyphicon glyphicon-shopping-cart"></span>
+                                    <input type="submit" value="ADD TO CART">
+                                 </div>
+                             </form>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        Copyright © 2016 Promeds Marketplace Limited.<br>
+                        All rights Reserved
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-2"></div>
+</div>
+<div class="clear1"></div>
+    <div class="clear1"></div>
+{% endblock %}
+
+
+<!--
+
+
+<div class="w3-center" xmlns="http://www.w3.org/1999/html">
+
+<div class="w3-container w3-center" style="position:relative; width:50%">
+<h2> Details</h2>
+<div class="w3-card w3-white">
+    <div class="col-sm-6">
+        <label>Name:</label>
+        <p>{{ tablet.tab_name }}</p><br>
+           <label>Price:</label>
+        <p>{{ tablet.tab_price }}</p><br>
+           <label>manufacturer:</label>
+        <p>{{ tablet.tab_manufacturer}}</p><br>
+            <label>Side Effects:</label>
+        <p>{{ tablet.tab_sideeff}}</p><br>
+    </div>
+
+    <div class="col-sm-6">
+
+        <form id="quant_form" method="POST" action="">{% csrf_token %}
+
+            <label>Quantity</label>
+            <input type="number" value="quantity" name="quantity"><br>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <input type="submit" value="ADD TO CART">
+        </form>
+
+
+
+    </div>
+
+</div>
+
+<p>Copyright © 2016 Promeds Marketplace Limited.<br>
+All rights Reserved
+
+</div>
+</div>
+-->
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+{% extends 'promeds/base_template.html' %}
+{% block styles %}
+    .clear1 {
+    clear: both;
+    height: 10px;
+    }
+    #rcorners1 {
+    border-radius: 25px;
+    background:#B0E0E6;
+    padding: 20px;
+     <!--box-shadow: 10px 10px 5px #888888;-->
+    }
+    .clear2 {
+    clear: both;
+    height: 10px;
+
+    }
+    .box:hover {
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+    }
+
+{% endblock %}
+{% block body1 %}
+     <div class="clear1"></div>
+     <div class="clear1"></div>
+  <div class="container-fluid">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+                  <div class="panel-group">
+                    <div class="panel panel-default">
+                      <div class="panel-heading" style="background-color:#5bc0de">Review order</div>
+                        <div class="panel-body" >
+                        {% if medss %}
+                            {%  for t in medss %}
+                                {% for b in med %}
+                                    {% if b.pk == t.med_id %}
+                                        <div class="row" id = "rcorners1">
+                                          <div class="col-sm-8">
+                                              <label>Product Name:</label>
+                                                {{ b.name }}
+                                              <br>
+                                              <label>Formulation:</label>
+                                                {{ b.formulation }}
+                                              <br>
+                                              <label>Quantity:</label>
+                                                {{ t.quantity }}
+                                              <br>
+                                              <label>Price:</label>
+                                                {{ b.price }}
+                                          </div>
+                                          <div class="col-sm-4" >
+                                              <a href="{% url 'deletemed' b.pk %}" class="btn btn-info box" role="button" style="align:center">Delete Item</a>
+
+                                          </div>
+                                        </div>
+                                        <div class="clear2"></div>
+                                    {%  endif %}
+                                 {%  endfor %}
+                            {%  endfor %}
+                        {% else %}
+                            <p>No orders to review </p>
+                        {% endif %}
+                        </div>
+                    </div>
+                  </div>
+        </div>
+
+  <div class="col-sm-3"></div>
+  </div>
+{% if medss %}
+    <center><a href="{% url 'bill' %}" class="btn btn-info box" role="button" style="align:center">Confirm Order</a></center>
+    <!--<input type="submit" class="btn btn-primary" href="{% url 'billpage' %}"  style="align:center">Confirm Order</input>-->
+    {% else %}
+    <center>
+        <a href="{% url 'healthcarepage' %}" class="btn btn-info box" role="button" style="align:center">Order Medicines</a>
+    </center>
+{% endif %}
+    <div class="clear1"></div>
+     <div class="clear1"></div>
+{% endblock %}

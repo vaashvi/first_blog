@@ -1,0 +1,210 @@
+{% extends 'promeds/base_template.html' %}
+{% block styles %}
+    .clear1 {
+    clear: both;
+    height: 30px;
+    }
+    #rcorners1 {
+    border-radius: 25px;
+    background:#B0E0E6;
+    padding: 20px;
+     <!--box-shadow: 10px 10px 5px #888888;-->
+    }
+    .clear2 {
+    clear: both;
+    height: 10px;
+
+    }
+    .box:hover {
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+    }
+.invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
+{% endblock %}
+<!--
+
+     <div class="clear1"></div>
+     <div class="clear1"></div>
+  <div class="container-fluid">
+  <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+                  <div class="panel-group">
+                    <div class="panel panel-default">
+                      <div class="panel-heading" style="background-color:#5bc0de">
+                          <p>Bill Details</p>
+                          <label>Name:</label>
+                          <p>{{ user.username }}</p>
+                      </div>
+                        <div class="panel-body">
+                            <table>
+                                <tr>
+                                    <th>Sr no </th>
+                                    <th>Name</th>
+                                    <th>Maunfacturer</th>
+                                    <th>Quantity</th>
+                                    <th>Price per piece</th>
+                                    <th>Total cost</th>
+                                </tr>
+                            {%  for t in tabletss %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                {% for tb in tab %}
+                                    {% if tb.pk == t.tab_id %}
+
+                                            <td>{{ tb.tab_name }}</td>
+                                            <td>{{ tb.tab_manufacturer }}</td>
+                                            <td >{{ t.quantity }}</td>
+                                            <td >{{ tb.tab_price }}</td>
+                                            <td>{{ t.total_price }}</td>
+                                    {%  endif %}
+                                 {%  endfor %}
+                                </tr>
+                            {%  endfor %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Total</td>
+                                <td>{{ t1 }}</td>
+                            </tr>
+                            </table>
+                        </div>
+</div>
+                  </div>
+        </div>
+  <div class="col-sm-3"></div>
+</div>
+
+     <div class="clear1"></div>
+     <div class="clear1"></div>
+
+-->
+
+
+
+{% block body1 %}
+<div class="clear1"></div>
+    <div class="clear1"></div>
+<div class="container-fluid">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+    <div class="clear1"></div>
+
+    <div class="w3-card-4 w3-white" style="z-index: 20">
+    <div class="row">
+        <div class="col-xs-12">
+    		<div class="invoice-title">
+    			<h2>Invoice</h2><h3 class="pull-right">Order # {{ bills.pk | add:"3000"}}</h3>
+    		</div>
+    		<hr>
+            <div style="padding: 5px 5px 5px 5px">
+    		<div class="row">
+    			<div class="col-xs-6" >
+    				<address>
+    				<strong>Billed To:</strong>
+    					{{ user.username }}
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address style="text-align: left">
+
+        			<strong style="margin-left:275px">Shipped :</strong>
+
+                        {{ spd.address }},<br>
+                         <div style="margin-left:355px">
+                        {{ spd.landmark }},<br>
+                        {{ spd.city }},<br>
+                        {{ spd.state }},<br>
+                        {{ spd.pincode }}
+                            </div>
+    				</address>
+    			</div>
+    		</div>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    					<strong>Payment Method:</strong>
+    					CASH ON DELIVERY
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+    					<strong>Order Date:</strong>
+    					{{ bills.billdate }}<br><br>
+    				</address>
+    			</div>
+    		</div>
+    	</div>
+            </div>
+    </div>
+
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title"><strong>Order summary</strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-responsive">
+    					<table class="table table-condensed">
+    						<thead>
+                                <tr>
+        							<td><strong>Item</strong></td>
+        							<td class="text-center"><strong>Price</strong></td>
+        							<td class="text-center"><strong>Quantity</strong></td>
+        							<td class="text-right"><strong>Totals</strong></td>
+                                </tr>
+    						</thead>
+    						<tbody>
+    							<!-- foreach ($order->lineItems as $line) or some such thing here -->
+
+                            {%  for t in tabletss %}
+                                <tr>
+
+                                {% for tb in tab %}
+                                    {% if tb.pk == t.tab_id %}
+
+                                            <td>{{ tb.tab_name }}</td>
+                                            <td class="text-center" >{{ tb.tab_price }}</td>
+                                            <td class="text-center">{{ t.quantity }}</td>
+                                            <td class="text-right">{{ t.total_price }}</td>
+                                    {%  endif %}
+                                 {%  endfor %}
+                                </tr>
+                            {%  endfor %}
+
+
+                                <tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Total</strong></td>
+    								<td class="no-line text-right">{{ bills.totalprice }}</td>
+    							</tr>
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</div>
+</div></div>
+<div class="col-sm-2"></div>
+
+{% endblock %}

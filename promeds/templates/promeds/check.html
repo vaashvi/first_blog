@@ -1,0 +1,131 @@
+{% extends 'promeds/base_template.html' %}
+{% block styles %}
+.address{
+    height:"20px"
+    width:"20px"
+    }
+
+    .clear1 {
+    clear: both;
+    height: 10px;
+}
+     #rcorners1 {
+    border-radius: 25px;
+    background:#B0E0E6;
+    padding: 20px;
+     <!--box-shadow: 10px 10px 5px #888888;-->
+    }
+
+    .box:hover {
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+    }
+
+
+
+{% endblock %}
+{% block body1 %}
+    <div class="container-fluid">
+<center>
+     <div class="col-sm-2">
+</div>
+        <div class="col-sm-8">
+
+<div class="clear1"></div>
+<div class="clear1"></div>
+
+    <div class="clear1"></div>
+ <div class="clear1"></div>
+
+    <div class="clear1"></div>
+
+    <div class="clear1"></div>
+
+    <div class="card card-inverse card-info text-xs-center" style="background-color: transparent">
+  <div class="card-block">
+    <blockquote class="card-blockquote" style="font-size:30px;">
+        <div class="row">
+    				<address >
+    				<strong>  Laboratory: </strong>
+    				        {{ app.lab }}
+
+                    </address><br>
+
+    		</div>
+    		<div class="row">
+    			<div class="col-xs-6 text-left">
+    				<address>
+    					<strong> Time Slot : </strong>
+{{ app.time_slot }}    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+    					<strong> Appointment Date : </strong>
+    					{{ app.date_app1 }}<br><br>
+    				</address>
+                    </div></div>
+    </blockquote>
+  </div>
+</div>
+ </div>
+</center>
+    <div class="col-sm-2">
+</div>
+ <div class="col-sm-3">
+</div>
+
+
+ <div class="col-sm-6">
+                  <div class="panel-group">
+                    <div class="panel panel-default">
+                      <div class="panel-heading" style="background-color:#5bc0de">Review order</div>
+                        <div class="panel-body" >
+                        {% if x %}
+                            {% for test in x %}
+                                {% for a in all_test %}
+
+                                        {% if  a.name  ==  test.storetest  %}
+                                        <div class="row" id = "rcorners1">
+                                          <div class="col-sm-8">
+                                              <label>Test Name : </label>
+{{ a.name }}                                              <br>
+                                              <label>Description :</label>
+{{ a.text }}
+                                              <br>
+                                              <label>Duration :</label>
+                                              {{ a.duration }}
+                                              <br>
+                                              <label>Price : </label>
+                                                {{ a.price }}
+                                          </div>
+                                          <div class="col-sm-4" >
+                                              <a href="{% url 'deletetest' test.test_id %}" class="btn btn-info box" role="button" style="align:center">Delete Item</a>
+
+                                          </div>
+                                        </div>
+                                        <div class="clear1"></div>
+                                    {%  endif %}
+                                 {%  endfor %}
+                            {%  endfor %}
+                            {% else %}
+                            <p>No tests booked</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                  </div>
+
+{% if x %}
+    <center><a href="{% url 'Create_bill' %}" class="btn btn-info box" role="button" style="align:center">Confirm Test</a></center>
+{% else %}
+    <a href="{% url 'diagnosticpage' %}" class="btn btn-info box" role="button" style="align:center">Book Tests</a>
+{% endif %}
+ </div>
+ </div>
+
+</div>
+ <div class="col-sm-3">
+</div>
+
+
+ {% endblock %}

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<title>PROMEDS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+{% load staticfiles %}
+
+<style>
+body {
+font-family: "Lato", sans-serif;
+ font-style: normal;
+    position: relative;
+}
+
+header,main,article,nav,time,aside,footer,small {
+display:block;
+}
+
+.mySlides {
+display: none;
+z-index: -1;
+position:relative;
+
+  }
+
+.mySlides1 {
+display:none;
+z-index: -1;
+
+
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+
+	padding: 0px 0px 0px 46px;
+    margin: auto;
+    position: relative
+
+}
+
+.headerx{
+	position: relative;
+	top: 0;
+	left:0;
+	width:100%;
+	height:100px;
+	color:white;
+	z-index:7;
+	font-family: verdana;
+	-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+}
+
+
+
+
+/*NAV header styles*/
+
+nav.primary {
+margin:20px 0 0 6px;
+}
+nav.primary dl {
+margin:0;
+}
+nav.primary dt {
+display:none;
+}
+nav.primary a:before {
+content:" ";
+display:block;
+background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNS4wLjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAgLS0+DQo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCIgWw0KCTwhRU5USVRZIG5zX2Zsb3dzICJodHRwOi8vbnMuYWRvYmUuY29tL0Zsb3dzLzEuMC8iPg0KXT4NCjxzdmcgdmVyc2lvbj0iMS4wIg0KCSB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczphPSJodHRwOi8vbnMuYWRvYmUuY29tL0Fkb2JlU1ZHVmlld2VyRXh0ZW5zaW9ucy8zLjAvIg0KCSB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjExNHB4IiBoZWlnaHQ9IjE3cHgiIHZpZXdCb3g9IjQuNDIyIDE4LjIxMiAxMTQgMTciIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgNC40MjIgMTguMjEyIDExNCAxNyINCgkgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8ZGVmcz4NCjwvZGVmcz4NCjxyZWN0IHg9IjAuNjM5IiB5PSI4Ljk2MSIgdHJhbnNmb3JtPSJtYXRyaXgoMC45ODkyIDAuMTQ2NCAtMC4xNDY0IDAuOTg5MiAzLjI5MDYgLTguOTU3NikiIGZpbGw9IiNGRkZGRkYiIHdpZHRoPSIxMjMuNzI1IiBoZWlnaHQ9IjE3LjgzMiIvPg0KPC9zdmc+DQo=);
+height:17px;
+width:114px;
+}
+nav.primary dd {
+margin:0 0 0 1px;
+padding:0;
+float:left;
+}
+nav.primary a {
+font-family:"OstrichSansMedium";
+display:block;
+width:114px;
+height:90px;
+color:#666;
+margin-top:10px;
+text-decoration:none;
+font-size:1.2em;
+letter-spacing:.1em;
+background:#ccc url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImcxOTAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMTAwJSIgeTE9IjEwMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgo8c3RvcCBzdG9wLWNvbG9yPSIjQjJCMkIyIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjQ0NDQ0NDIiBvZmZzZXQ9IjAuMSIvPjxzdG9wIHN0b3AtY29sb3I9IiNDQ0NDQ0MiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2cxOTApIiAvPgo8L3N2Zz4=);
+-webkit-transition-property:height, margin-top;
+-webkit-transition-duration:.025s;
+-webkit-transition-timing-function:ease-in-out;
+-moz-transition-property:height, margin-top;
+-moz-transition-duration:.025s;
+-moz-transition-timing-function:ease-in-out;
+-o-transition-property:height, margin-top;
+-o-transition-duration:.025s;
+-o-transition-timing-function:ease-in-out;
+transition-property:height, margin-top;
+transition-duration:.025s;
+transition-timing-function:ease-in-out;
+}
+nav.primary a:hover {
+background:#ddd url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc4NDEiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMTAwJSIgeTE9IjEwMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgo8c3RvcCBzdG9wLWNvbG9yPSIjQjJCMkIyIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjREREREREIiBvZmZzZXQ9IjAuMSIvPjxzdG9wIHN0b3AtY29sb3I9IiNEREREREQiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c4NDEpIiAvPgo8L3N2Zz4=);
+color:#333;
+margin-top:0;
+height:100px;
+}
+nav.primary a.selected {
+background:#7f7f7f url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc2NjIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMTAwJSIgeTE9IjEwMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgo8c3RvcCBzdG9wLWNvbG9yPSIjNUM1QzVDIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjN0Y3RjdGIiBvZmZzZXQ9IjAuMSIvPjxzdG9wIHN0b3AtY29sb3I9IiM3RjdGN0YiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c2NjIpIiAvPgo8L3N2Zz4=);
+color:#fff;
+margin-top:0;
+height:100px;
+}
+nav.primary span {
+padding:35px 0 0 10px;
+display:block;
+}
+
+
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 30px;
+  padding: 45px;
+  text-align: right;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  font-style:normal;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  font-style:normal;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+body {
+  background: #76b852; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+  background: -o-linear-gradient(right, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8DC26F);
+  font-family: "Roboto", sans-serif;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+</style>
+
+
+<style>
+
+#sub{
+
+ font-family: "Roboto",Arial;
+ font-style:normal;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 19px;
+
+  cursor: pointer;
+}
+
+
+#sub:hover,#sub:active,#sub:focus {
+  background: #43A047;
+  }
+
+ #section1 {padding-top:100px;height:500px;color: #fff; }
+  #section2 {padding-top:100px;height:500px;color: #fff;}
+  #section3 {padding-top:100px;height:500px;color: #fff;}
+  #section41 {padding-top:100px;height:500px;color: #fff;}
+  #section42 {padding-top:100px;height:500px;color: #fff;}
+
+
+
+
+
+
+
+</style>
+<script>
+
+$('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+
+</script>
+<body data-spy="scroll" data-target=".navbar" data-offset="100">
+
+
+
+<div class="headerx w3-white">
+
+
+
+ <nav class="primary navbar navbar-fixed-top ">
+    <div class="container-fluid">
+        <div class="navbar-header">
+              <img class="w3-right" src="{% static "promeds\images\ProMed_WebLogo.png" %}"
+                alt="ProMeds.com">
+
+        </div>
+ <dl>
+			<dt>In this site</dt>
+			<dd><a href="#section1" class="selected"><span>Home</span></a></dd>
+			<dd><a href="#section2"><span>About Us</span></a></dd>
+			<dd><a href="#section3"><span>Features</span></a></dd>
+			<dd><a href="#section4"><span>Login </span></a></dd>
+			<dd><a href="#section5"><span>Developers</span></a></dd>
+
+		</dl>
+
+
+ </dl>
+        </div>
+ </nav>
+ <!--
+ <div class="w3-content w3-section" style="max-width:500px">
+
+<img class="mySlides1 w3-animate-left w3-left" src="file:///C:\Users\Administrator\Desktop\wpd project\ProMed_WebLogo.png" >
+<img class="mySlides1 w3-animate-left w3-left " src="file:///C:\Users\Administrator\Desktop\wpd project\ProMed_WebLogo.png" >
+</div>
+ -->
+
+</div>
+  <!-- Automatic Slideshow Images -->
+<div id="section1" >
+
+  <div class="mySlides w3-display-container" >
+    <img class="slide" src="{% static  "promeds\images\see.jpg" %}"	style="width:100%" >
+    <div class="w3-display-bottommiddle w3-container w3-text-green w3-padding-32 w3-hide-small">
+	<h1>	ProMeds	</h1>
+      <p><b><h4>Reaching out to the community.</h4></b></p>
+    </div>
+
+  </div>
+  <div class="mySlides w3-display-container">
+    <img class="slide" src="{% static "promeds\images\ss.jpg" %}" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-green w3-padding-32 w3-hide-small">
+      <h1>ProMeds</h1>
+      <p><b><h4>Catering to the essentail needs</h4></b></p>
+    </div>
+  </div>
+
+  <div class="mySlides w3-display-container">
+    <img class="slide" src="{% static "promeds\images\gg.jpg" %}" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-green w3-padding-32 w3-hide-small">
+      <h1>ProMeds</h1>
+      <p><b><h4>We care for You.</h4></b></p>
+    </div>
+  </div>
+
+  <div class="mySlides w3-display-container">
+    <img class="slide" src="{% static "promeds\images\ba1.jpg" %}"  style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-green w3-padding-32 w3-hide-small">
+      <h1>ProMeds</h1>
+      <p><b><h4>You're in good hands!</h4></b></p>
+    </div>
+  </div>
+</div>
+
+
+<div id="section2" class="heigtharrange">
+<div class="w3-row-padding ">
+
+
+<div style="background-color: #8DC26F ; padding: 40px 40px 40px 40px">
+
+  <h2 class="w3-wide">PROMEDS</h2>
+
+   <p> India’s Trusted Pharmacy: Purchase Medicines & Drugs Online in India</p>
+
+<p>No more running from one chemist store to another when in need of medicines! 1mg.com brings to you an online medicine store, which can be accessed for all health needs. With 1mg.com, you don’t just buy medicine online, but can also book appointment with the best doctors nearby. We are focused towards making healthcare accessible and affordable, and so give you plenty of options in terms of medicine substitutes.
+With us, you can know about the composition of medicines prescribed to you by your doctor and search for its cheaper but equally effective substitute. With online medicine delivery, we believe in taking stress off your shoulders and helping you focus only on your recovery.
+</p>
+    <p>
+    We cater to the demands of online medical order in places like Delhi – NCR, Chennai, Agra, Indore, Hyderabad, Lucknow, Bhopal, Bengaluru, Jaipur, Kolkata and Ahmedabad. Fast and free delivery of online ordered medicines at your doorstep is our driving motto.
+Reach us for online pharmacy store in </p>
+
+<p>Ayurvedic and homeopathic categories are also our forte, and a wide range of medicine is available under these streams. Adding new wings to E-Pharmacy, we ensure complete health care for all. The popular OTC categories at our website are diabetes devices, Ayurveda and mother & child.
+At ProMeds.com you can explore various online prescription medicines as well as OTC products. Buying prescription drugs online is very simple on 1mg, you just need to search for the medicine, add to cart and if the medicine requires a prescription – you can upload a copy of the prescription from your desktop right there and proceed to checkout. You can also buy other health care products online that don’t require a prescription. So shop for online health care medicines for your personal and family wellness.
+Book appointment with doctors online</p>
+
+<p>If you are looking for the best specialized doctors or hospitals in your locality, then explore our website. Booking appointment with doctors is much easy now with our services along with purchasing medicines online. From Child Specialist to Gynecologist, Orthopaedician, Dietician, Neurologist, all can be found and accessed easily on our website.
+Diagnostic tests simplified</p>
+
+<p>Now, for prescribed tests, you don’t need to wait for hours in physical laboratories and testing centers. This online medicine store India also helps in getting free home sample pickup. You just need to search for prescribed tests and book your request. Various recognized diagnostic labs are registered with us to ensure safe and hassle free tests. </p>
+</p>
+
+</div>
+
+</div>
+
+   <!-- </div>-->
+     <div id="section3" class="heigtharrange">
+  <div class="w3-container w3-padding-64 w3-center">
+<h2>PROMEDS BENEFITS</h2>
+<h3></h3><p>WHAT MAKES US SPECIAL?</p></h3>
+
+<div class="w3-row"><br>
+
+<div class="w3-quarter">
+  <img src="{% static "promeds\images\genuine.png" %}" alt="Medicine" style="width:55%" class="w3-circle w3-hover-opacity">
+  <h3>Genuine Medicines</h3>
+  <p>Genuine medicines by licensed pharmacies.</p>
+</div>
+
+<div class="w3-quarter">
+  <img src="{% static "promeds\images\ayurveda.png" %}" alt="DOC" style="width:55%" class="w3-circle w3-hover-opacity">
+  <h3>Trustworthy Pharmacists</h3>
+  <p>Get detailed information on 100K medicines vetted by certified pharmacists</p>
+</div>
+
+<div class="w3-quarter">
+  <img src="{% static "promeds\images\medicals.png" %}" alt="Boss" style="width:55%" class="w3-circle w3-hover-opacity">
+  <h3>Family Medical Records</h3>
+  <p>One place for your family’s medical records.</p>
+</div>
+
+<div class="w3-quarter">
+  <img src="{% static "promeds\images\add-to-cart.png" %}" alt="Boss" style="width:55%" class="w3-circle w3-hover-opacity">
+  <h3>Free Home Delivery</h3>
+  <p>Delivery at your
+doorstep.</p>
+</div>
+
+</div>
+</div>
+
+
+</div>
+
+
+
+<!--</div>-->
+
+
+
+
+    <div id="section4" style="background-image:url({% static "promeds\images\ban.jpg" %}); padding:35px 30px 2px 780px"; class="heigtharrange">
+<div>
+
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form" action="{% url 'login' %}" method='POST'> {% csrf_token %}
+                <input type="text" placeholder="username" name="username"/>
+                <input type="password" placeholder="password" name="password"/>
+                <input type="submit" id="sub" value="LOGIN"/>
+                <p class="message">Not registered? <a href="{% url 'createaccount' %}">Create an account</a></p>
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+</div>
+
+<!--</div>
+-->
+
+
+
+<!-- End Page Content
+</div>-->
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-center w3-opacity w3-light-grey" style="position: relative">
+
+  <p class="w3-medium">PROJECT</p>
+  <p class="w3-medium">Designed for Sardar Patel Institute of Technology</p>
+<a href="file:///C:/Users/User/Documents/NetBeansProjects/JavaScriptApplication/public_html/index.html"> Designers</a>
+  </footer>
+
+<script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 4000);
+}
+
+
+
+
+/* Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+*/
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+</div>
+</body>
+</html>

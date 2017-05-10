@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAwrIFALPNWgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEREQAAAAAAEiIhAAAAAAASIiEAAAAAABIiIQAAAAAAEiIhAAABERESIiEREREiIiIiIiIiESIiIiIiIiIRIiIiIiIiIhEiIiIiIiIiEREREiIhEREQAAASIiEAAAAAABIiIQAAAAAAEiIhAAAAAAASIiEAAAAAABEREQAAD4HwAA+B8AAPgfAAD4HwAA+B8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgfAAD4HwAA+B8AAPgfAAD4HwAA" rel="icon" type="image/x-icon" />
+<title>PROMEDS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% load staticfiles %}
+
+<style>
+body {
+font-family: "Lato", sans-serif;
+ font-style: normal;
+    position: relative;
+}
+
+header,main,article,nav,time,aside,footer,small {
+display:block;
+}
+
+.mySlides {
+display: none;
+z-index: -1;
+position:relative;
+
+  }
+
+.mySlides1 {
+display:none;
+z-index: -1;
+
+
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+    top:100px;
+	padding: 0px 0px 0px 46px;
+    margin: auto;
+    position: relative
+
+}
+
+.headerx{
+	position: relative;
+	top: 0;
+	left:0;
+	width:100%;
+	height:100px;
+	color:white;
+	z-index:7;
+	font-family: verdana;
+	-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+}
+
+
+
+
+nav.primary a {
+font-family:"OstrichSansMedium";
+display:block;
+width:114px;
+height:90px;
+color:#666;
+margin-top:0px;
+text-decoration:none;
+font-size:1.2em;
+letter-spacing:.1em;
+background:#ccc url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImcxOTAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMTAwJSIgeTE9IjEwMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgo8c3RvcCBzdG9wLWNvbG9yPSIjQjJCMkIyIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjQ0NDQ0NDIiBvZmZzZXQ9IjAuMSIvPjxzdG9wIHN0b3AtY29sb3I9IiNDQ0NDQ0MiIG9mZnNlli0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2cxOTApIiAvPgo8L3N2Zz4=);
+-webkit-transition-property:height, margin-top;
+-webkit-transition-duration:.025s;
+-webkit-transition-timing-function:ease-in-out;
+-moz-transition-property:height, margin-top;
+-moz-transition-duration:.025s;
+-moz-transition-timing-function:ease-in-out;
+-o-transition-property:height, margin-top;
+-o-transition-duration:.025s;
+-o-transition-timing-function:ease-in-out;
+transition-property:height, margin-top;
+transition-duration:.025s;
+transition-timing-function:ease-in-out;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 30px;
+  padding: 45px;
+  text-align: right;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  font-style:normal;
+  outline: 0;
+  background: #f2f2f2;
+    color:#000000;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  font-style:normal;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+body {
+     background: #25b7c4;
+    background: linear-gradient(to right, #25c481, #25b7c4);
+    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.navbar-inverse {
+    background-color:#1f7a7a;
+    border-color: #080808;
+}
+
+</style>
+
+
+<style>
+
+#sub{
+
+ font-family: "Roboto",Arial;
+ font-style:normal;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 19px;
+
+  cursor: pointer;
+}
+
+
+#sub:hover,#sub:active,#sub:focus {
+  background: #43A047;
+  }
+
+ #section1 {padding-top:100px;height:750px;color: #fff; }
+  #section2 {padding-top:100px;height:750px;color: #fff;}
+  #section3 {padding-top:100px;height:750px;color: #fff; padding-bottom: 200px;margin-bottom:200px}
+  #section4 {padding-top:100px;height:750px;color: #fff;}
+  #section5 {padding-top:200px;height:750px;color: #fff;}
+.container-fluid {
+    padding-right: auto;
+    padding-left: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#1{
+    font-size: 300px ;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+
+</style>
+<script>
+
+$('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+
+</script>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="100">
+
+
+
+
+
+ <nav class="primary navbar navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header" style="width:250px">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+             <a class="navbar-brand" style="width:270px"><img src="{% static "promeds\images\ProMed_WebLogo.png" %}"
+                alt="ProMeds.com"></a>
+
+        </div>
+        <div>
+            <div class="collpase navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+{% if error_message %}
+			<li><a href="#section1" class="selected">Home</a></li>
+			<li><a href="#section2">About Us</a></li>
+			<li><a href="#section3">Features</a></li>
+			<li><a href="#section4">Login</a></li>
+			<li><a href="#section5">Developers</a></li>
+{% elif not error_message %}
+                	<li><a href="#section1" >Home</a></li>
+			<li><a href="#section2">About Us</a></li>
+			<li><a href="#section3">Features</a></li>
+			<li><a href="#section4" class="selected">Login</a></li>
+			<li><a href="#section5">Developers</a></li>
+                {% endif %}
+		</ul>
+</div>
+</div>
+</div>
+ </nav>
+
+<div id="section1"  class="container-fluid" >
+
+  <div class="mySlides w3-display-container" >
+    <img class="slide" src="{% static  "promeds\images\see.jpg" %}"	style="width:100%" >
+    <div class="w3-display-bottommidule w3-container w3-text-green w3-padding-32 w3-hide-small">
+	<h1>	ProMeds	</h1>
+      <p><b><h4>Reaching out to the community.</h4></b></p>
+    </div>
+
+  </div>
+  <div class="mySlides w3-display-container">
+    <img class="slide" src="{% static "promeds\images\ss.jpg" %}" style="width:100%">
+    <div class="w3-display-bottommidule w3-container w3-text-green w3-padding-32 w3-hide-small">
+s      <h1>ProMeds</h1>
+      <p><b><h4>Catering to the essentail needs</h4></b></p>
+    </div>
+  </div>
+
+  <div class="mySlides w3-display-container">
+    <img class="slide" src="{% static "promeds\images\gg.jpg" %}" style="width:100%">
+    <div class="w3-display-bottommidule w3-container w3-text-green w3-padding-32 w3-hide-small">
+      <h1>ProMeds</h1>
+      <p><b><h4>We care for You.</h4></b></p>
+    </div>
+  </div>
+
+  <div class="mySlides w3-display-container" >
+    <img class="slide" src="{% static "promeds\images\ba1.jpg" %}"  style="width:100%;height:550px;">
+    <div class="w3-display-bottommidule w3-container w3-text-green w3-padding-32 w3-hide-small">
+      <h1>ProMeds</h1>
+      <p><b><h4>You're in good hands!</h4></b></p>
+    </div>
+  </div>
+</div>
+
+
+<div id="section2"  class="container-fluid" style="margin-top:200px">
+<div class="w3-row-padding w3-center ">
+
+
+<div style="background-color: transparent ; padding: 0px 0px 0px 40px">
+
+  <h2 class="w3-wide">PROMEDS</h2>
+<div style="font-size: large">
+   <p id="1"> India’s Trusted Pharmacy: Purchase Medicines & Drugs Online in India</p>
+
+<p id="1">No more running from one chemist store to another when in need of medicines! Promeds.com brings to you an online medicine store, which can be accessed for all health needs. With 1mg.com, you don’t just buy medicine online, but can also book appointment with the best doctors nearby. We are focused towards making healthcare accessible and affordable, and so give you plenty of options in terms of medicine substitutes.
+With us, you can know about the composition of medicines prescribed to you by your doctor and search for its cheaper but equally effective substitute. With online medicine delivery, we believe in taking stress off your shoulders and helping you focus only on your recovery.
+</p>
+    <p id="1">
+    We cater to the demands of online medical order in places like Delhi – NCR, Chennai, Agra, Indore, Hyderabad, Lucknow, Bhopal, Bengaluru, Jaipur, Kolkata and Ahmedabad. Fast and free delivery of online ordered medicines at your doorstep is our driving motto.
+Reach us for online pharmacy store in </p>
+
+<p id="1">Ayurvedic and homeopathic categories are also our forte, and a wide range of medicine is available under these streams. Aliing new wings to E-Pharmacy, we ensure complete health care for all. The popular OTC categories at our website are diabetes devices, Ayurveda and mother & child.
+At ProMeds.com you can explore various online prescription medicines as well as OTC products. Buying prescription drugs online is very simple on 1mg, you just need to search for the medicine, ali to cart and if the medicine requires a prescription – you can upload a copy of the prescription from your desktop right there and proceed to checkout. You can also buy other health care products online that don’t require a prescription. So shop for online health care medicines for your personal and family wellness.
+Book appointment with doctors online</p>
+
+<p id="1">If you are looking for the best specialized doctors or hospitals in your locality, then explore our website. Booking appointment with doctors is much easy now with our services along with purchasing medicines online. From Child Specialist to Gynecologist, Orthopaedician, Dietician, Neurologist, all can be found and accessed easily on our website.
+Diagnostic tests simplified</p>
+
+<p id="1">Now, for prescribed tests, you don’t need to wait for hours in physical laboratories and testing centers. This online medicine store India also helps in getting free home sample pickup. You just need to search for prescribed tests and book your request. Various recognized diagnostic labs are registered with us to ensure safe and hassle free tests. </p>
+
+</div>
+</div>
+</div>
+    </div>
+
+
+   <!-- </div>-->
+     <div id="section3"  class="container-fluid">
+  <div class="w3-container w3-center">
+<h2>PROMEDS BENEFITS</h2>
+<h3></h3><p>WHAT MAKES US SPECIAL?</p></h3>
+
+<div class="w3-row"><br>
+
+<div class="w3-quarter">
+  <img src="{% static "promeds\images\genuine.png" %}" alt="Medicine" style="width:55%" class="w3-circle w3-hover-opacity">
+  <h3>Genuine Medicines</h3>
+  <p>Genuine medicines by licensed pharmacies.</p>
+</div>
+
+<div class="w3-quarter">
+  <img src="{% static "promeds\images\ayurveda.png" %}" alt="DOC" style="width:55%" class="w3-circle w3-hover-opacity">
+  <h3>Trustworthy Pharmacists</h3>
+  <p>Get detailed information on 100K medicines vetted by certified pharmacists</p>
+</div>
+
+<div class="w3-quarter">
+  <img src="{% static "promeds\images\medicals.png" %}" alt="Boss" style="width:55%" class="w3-circle w3-hover-opacity">
+  <h3>Family Medical Records</h3>
+  <p>One place for your family’s medical records.</p>
+</div>
+
+<div class="w3-quarter">
+  <img src="{% static "promeds\images\add-to-cart.png" %}" alt="Boss" style="width:55%" class="w3-circle w3-hover-opacity">
+  <h3>Free Home Delivery</h3>
+  <p>Delivery at your
+doorstep.</p>
+</div>
+
+
+</div>
+</div>
+
+
+</div>
+
+
+
+<!--</div>-->
+
+
+
+
+    <div id="section4" style="background-image:url({% static "promeds\images\ban.jpg" %}); margin-top: 20px;height:900px"  class="container-fluid">
+
+    <div class="login-page">
+        <div class="form">
+            {% if error_message %}
+        <p><strong class="text-danger">{{ error_message }}</strong></p>
+        {% endif %}
+            <form class="login-form" action="{% url 'login' %}" method='POST'> {% csrf_token %}
+                <input type="text" placeholder="username" name="username"/>
+                <input type="password" placeholder="password" name="password"/>
+                <input type="submit" id="sub" value="LOGIN"/>
+                <p class="message">Not registered? <a href="{% url 'createaccount' %}">Create an account</a></p>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<!--</div>
+-->
+
+
+<div id="section5" class="heigtharrange">
+    <div class="container-fluid" >
+        <div class="col-sm-4">
+
+
+  <img src="{% static "promeds\images\mahi.png" %}" alt="Mahi" style="width:100%;height:300px">
+  <div class="container">
+    <h4><b>Mahi Qadri</b></h4>
+    <p>Web Designer</p>
+  </div>
+
+
+        </div>
+        <div class="col-sm-4">
+
+  <img src="{% static "promeds\images\divita.png" %}" alt="Divita" style="width:100%;height:300px">
+  <div class="container">
+    <h4><b>Divita Vora</b></h4>
+    <p>Web Designer</p>
+  </div>
+
+        </div>
+        <div class="col-sm-4">
+
+  <img src="{% static "promeds\images\aashvi.jpg" %}" alt="Aashvi" style="width:100%;height:300px">
+  <div class="container">
+    <h4><b>Aashvi Vora</b></h4>
+    <p>Web Designer</p>
+  </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    </div>
+
+
+<!-- End Page Content
+</div>-->
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-center w3-opacity w3-light-grey" style="position: relative">
+
+  <p class="w3-medium">PROJECT</p>
+  <p class="w3-medium">Designed for Sardar Patel Institute of Technology</p>
+<a href="file:///C:/Users/User/Documents/NetBeansProjects/JavaScriptApplication/public_html/index.html"> Designers</a>
+  </footer>
+
+<script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 4000);
+}
+
+
+
+
+/* Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+*/
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+</div>
+</body>
+</html>

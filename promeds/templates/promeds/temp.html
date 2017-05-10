@@ -1,0 +1,58 @@
+{% extends 'promeds/base_template.html' %}
+{% block body1 %}
+
+    <table>
+    <h2>Medicines Ordered With Prescription</h2>
+
+        <tr>
+            <td>Sr.no</td>
+            <td>Product Ordered</td>
+            <td>Order Date</td>
+            <td>Bill no</td>
+        </tr>
+        {% if bills %}
+        {% for b in bills %}
+             <tr>
+             <td>{{ forloop.counter }}</td>
+            {% for o in b.orders.all %}
+                {% for b in tab %}
+                    {% if b.pk == o.tab_id %}
+                            <td>{{ b.tab_name }}</td>
+                            <td>{{ o.order_date }}</td>
+                            <td>{{ b.pk }}</td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    {% endif %}
+    </table>
+    <br>
+    <br>
+    <table>
+        <h2>Medicines Ordered Without Prescription</h2>
+        <tr>
+            <td>Sr.no</td>
+            <td>Product Ordered</td>
+            <td>Order Date</td>
+            <td>Bill no</td>
+        </tr>
+        {% if bills1 %}
+         {% for b in bills1 %}
+             <tr>
+             <td>{{ forloop.counter }}</td>
+            {% for o in b.ordermed.all %}
+                {% for b in med %}
+                    {% if b.pk == o.med_id %}
+                            <td>{{ b.name }}</td>
+                            <td>{{ o.orderdate }}</td>
+                            <td>{{ b.pk }}</td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    {% endif %}
+   </table>
+
+{% endblock %}

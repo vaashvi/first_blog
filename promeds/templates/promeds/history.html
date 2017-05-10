@@ -1,0 +1,327 @@
+{% extends 'promeds/base_template.html' %}
+
+<!--
+    <table>
+    <h2>Medicines Ordered With Prescription</h2>
+
+        <tr>
+            <td>Sr.no</td>
+            <td>Product Ordered</td>
+            <td>Order Date</td>
+            <td>Bill no</td>
+        </tr>
+        {% if bills %}
+        {% for b in bills %}
+             <tr>
+             <td>{{ forloop.counter }}</td>
+            {% for o in b.orders.all %}
+                {% for b in tab %}
+                    {% if b.pk == o.tab_id %}
+                            <td>{{ b.tab_name }}</td>
+                            <td>{{ o.order_date }}</td>
+                            <td>{{ b.pk }}</td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    {% endif %}
+    </table>
+    <br>
+    <br>
+    <table>
+        <h2>Medicines Ordered Without Prescription</h2>
+        <tr>
+            <td>Sr.no</td>
+            <td>Product Ordered</td>
+            <td>Order Date</td>
+            <td>Bill no</td>
+        </tr>
+        {% if bills1 %}
+         {% for b in bills1 %}
+             <tr>
+             <td>{{ forloop.counter }}</td>
+            {% for o in b.ordermed.all %}
+                {% for b in med %}
+                    {% if b.pk == o.med_id %}
+                            <td>{{ b.name }}</td>
+                            <td>{{ o.orderdate }}</td>
+                            <td>{{ b.pk }}</td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    {% endif %}
+   </table>
+
+-->
+{% block styles %}
+
+h1{
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+table{
+  width:100%;
+  table-layout: fixed;
+}
+.tbl-header{
+  background-color: rgba(255,255,255,0.3);
+ }
+.tbl-content{
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  text-transform: uppercase;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+/* demo styles */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: 'Roboto', sans-serif;
+}
+section{
+  margin: 50px;
+}
+
+
+/* follow me template */
+.made-with-love {
+  margin-top: 40px;
+  padding: 10px;
+  clear: left;
+  text-align: center;
+  font-size: 10px;
+  font-family: arial;
+  color: #fff;
+}
+.made-with-love i {
+  font-style: normal;
+  color: #F50057;
+  font-size: 14px;
+  position: relative;
+  top: 2px;
+}
+.made-with-love a {
+  color: #fff;
+  text-decoration: none;
+}
+.made-with-love a:hover {
+  text-decoration: underline;
+}
+
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+{% endblock %}
+{% block body1 %}
+<div class="clear1"></div>
+    <div class="clear1"></div>
+    {% if value == 2 %}
+
+       <div class="alert alert-warning" style="color:#EF3B3A">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>OOPS Sorry!!</strong> <div id="abc"> The item cannot be cancelled as it is already dispatched.</div>
+</div>
+    {% endif %}
+
+
+
+
+    <section> <!--for demo wrap-->
+<h1>Order History</h1>
+
+<div  class="tbl-header">
+    <center><h2>Medicines with Prescription</h2></center>
+<table cellpadding="0" cellspacing="0" border="0">
+  <thead>
+    <tr>
+
+            <th>Sr no</th>
+            <th>Product Ordered</th>
+            <th>Order Date</th>
+            <th>Bill no</th>
+        <th></th>
+        </tr>
+
+  </thead>
+</table>
+</div>
+<div  class="tbl-content">
+<table cellpadding="0" cellspacing="0" border="0">
+  <tbody>
+     {% if bills %}
+        {% for b in bills %}
+
+            {% for o in b.orders.all %}
+                    <tr>
+                    <td>{{ forloop.counter }}</td>
+                {% for tb in tab %}
+                    {% if tb.pk == o.tab_id %}
+                            <td>{{ tb.tab_name }}</td>
+                            <td>{{ o.order_date.date }}</td>
+                            <td>{{ b.pk }}</td>
+                        <td><a href="{% url 'deleteorder' b.pk  o.pk %}" class="btn btn-info box" role="button" style="align:center">Cancel Item</a></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    {% endif %}
+      </tbody>
+</table>
+</div>
+</section>
+    <section>
+<div  class="tbl-header">
+    <center><h2>Medicines without Prescription</h2></center>
+<table cellpadding="0" cellspacing="0" border="0">
+  <thead>
+    <tr>
+
+            <th>Sr.no</th>
+            <th>Product Ordered</th>
+            <th>Order Date</th>
+            <th>Bill no</th>
+        </tr>
+
+  </thead>
+</table>
+</div>
+<div  class="tbl-content">
+<table cellpadding="0" cellspacing="0" border="0">
+  <tbody>
+      {% if bills1 %}
+         {% for b in bills1 %}
+
+
+            {% for o in b.ordermed.all %}
+                   <tr>
+                 <td>{{ forloop.counter }}</td>
+                {% for mb in med %}
+                    {% if mb.pk == o.med_id %}
+                            <td>{{ mb.name }}</td>
+                            <td>{{ o.orderdate.date }}</td>
+                            <td>{{ b.pk }}</td>
+                            <td><a href="{% url 'deleteorders' b.pk  o.pk %}" class="btn btn-info box" role="button" style="align:center">Cancel Item</a></td>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    {% endif %}
+      </tbody>
+</table>
+</div>
+</section>
+
+
+    <section>
+<div  class="tbl-header">
+    <center><h2>Diagnostic test</h2></center>
+<table cellpadding="0" cellspacing="0" border="0">
+  <thead>
+    <tr>
+
+            <th>Sr.no</th>
+            <th>Laboratory</th>
+        <th>Appointment Date</th>
+            <th>Booking Date</th>
+        <th></th>
+        </tr>
+
+  </thead>
+</table>
+</div>
+<div  class="tbl-content">
+<table cellpadding="0" cellspacing="0" border="0">
+  <tbody>
+         {% for mb in app %}
+
+
+
+                   <tr>
+                    <td>{{ forloop.counter }}</td>
+                            <td>{{ mb.lab }}</td>
+                            <td>{{ mb.date_app1 }}</td>
+                       <td>{{ mb.Date_of_booking }}</td>
+
+                            <td><a href="{% url 'deleteorder_test' mb.pk %}" class="btn btn-info box" role="button" style="align:center">Cancel Test</a></td>
+
+
+            </tr>
+        {% endfor %}
+      </tbody>
+</table>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    $(window).on("load resize ", function() {
+  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+  $('.tbl-header').css({'padding-right':scrollWidth});
+    }).resize();
+</script>
+{% endblock %}

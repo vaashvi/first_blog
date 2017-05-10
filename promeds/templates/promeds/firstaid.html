@@ -1,0 +1,241 @@
+
+{% extends 'promeds/base_template.html' %}
+{% block styles %}
+
+
+	.cater-list-items
+	{
+		width:auto;
+		background:#70db70;
+		height:auto;
+		display: inline-block;
+		border: #000 solid 1px;
+		margin: 0 14px 20px 0;
+        align:center;
+        border-radius: 10px;
+
+	}
+
+    .cart{
+    background-color: #ffffff ;
+    padding:20px 0px 0px 17px;
+    }
+
+	.med_names
+	{
+		color:#FFFFFF;
+		font-size: 14px;
+		font-weight: 200;
+		margin: 5px;
+		text-align: center;
+		height: auto;
+		display: block;
+		background-color:#70db70;
+	}
+
+	.med-image {
+    overflow: hidden;
+    height: 228px;
+    background: #fff;
+    padding: 10px 10px 10px 10px;
+}
+
+.med-image img {
+    -webkit-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+	width: 300px;
+    height: auto;
+    position:relative;
+	}
+.thumbnail {
+    height: auto;
+    width: auto;
+    background-color:#70db70;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    margin-bottom: 0px;
+}
+
+#category-items{
+    position: relative;
+     '''width:100%;'''
+}
+.clear1 {
+    clear: both;
+    height: 10px;
+}
+    .clear2{
+    clear: both;
+    width: 5px;
+}
+    .fancybox-opened {
+    z-index: 8030;
+}
+
+
+.fancybox-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 8020;
+}
+
+.fancybox-image, .fancybox-inner, .fancybox-nav, .fancybox-nav span, .fancybox-outer, .fancybox-skin, .fancybox-tmp, .fancybox-wrap, .fancybox-wrap iframe, .fancybox-wrap object {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: top;
+}
+div {
+    display: block;
+}
+.fancybox-skin {
+    position: relative;
+    background: #ADFF2F;
+    color: #000;
+    text-shadow:none;
+    border-radius: 4px;
+    border: 2px solid #00b6c3;
+}
+    .opa{
+    display : block;
+    opacity:2;
+    }
+    {% endblock %}
+{% block body1 %}
+<!--<div class="container-fluid">
+    <div class="row">-->
+{% if value == 2 %}
+    <center>
+    <div class="fancybox-overlay fancybox-overlay-fixed opa " style="width: auto; height: auto; display: block; background: rgba(255,255,255,.5);">
+	<div class="fancybox-wrap fancybox-desktop fancybox-type-inline fancybox-opened" tabindex="-1" style="width: 576px; height: auto; position: absolute; top:450px; left: 480px; opacity: 1; overflow: visible;">
+	<div class="fancybox-skin" style="padding: 0px; width: auto; height: 150px;background:#9b9ccc ">
+		<div class="fancybox-outer">
+			<div class="fancybox-inner" style="overflow: auto; width: 572px; height: 100px;">
+				<div id="addtocart_confirmation" class="billing_modify_place_order" style="">
+									<div id="phar">
+										<p align="center">
+											<span id="lblpopupbrand">{{ medicinename }}  was successfully added to your shopping cart.</span>
+										</p>
+										<div class="clear1"></div>
+										<div class="floatl"><a href="{% url 'healthcarepage' %}">Continue shopping </a></div>
+										<div class="floatr"><a href="{% url 'shippingdetails1' %}">checkout</a></div>
+									</div>
+									<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+    </div>
+    </center>
+
+<div class="clear1"></div>
+    <div class="clear1"></div>
+ {% endif %}
+    {% if value == 3 %}
+        <center>
+    <div class="fancybox-overlay fancybox-overlay-fixed opa " style="width: auto; height: auto; display: block;">
+	<div class="fancybox-wrap fancybox-desktop fancybox-type-inline fancybox-opened" tabindex="-1" style="width: 576px; height: auto; position: absolute; top:450px; left: 480px; opacity: 1; overflow: visible;">
+	<div class="fancybox-skin" style="padding: 0px; width: auto; height: 150px; background:#9b9ccc ">
+		<div class="fancybox-outer">
+			<div class="fancybox-inner" style="overflow: auto; width: 572px; height: 100px;">
+				<div id="addtocart_confirmation" class="billing_modify_place_order" style="">
+									<div id="phar">
+										<p align="center">
+											<span id="lblpopupbrand">OOPS Sorry!! The item {{ medicinename }} is already in the cart</span>
+										</p>
+										<div class="floatl"><a   href="{% url 'healthcarepage' %}">Continue shopping </a></div>
+										<div class="floatr"><a   href="{% url 'shippingdetails1' %}">checkout</a></div>
+									</div>
+									<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+    </div>
+    </center>
+    {% endif %}
+
+
+
+
+<div class="clear1"></div>
+     {% if value == 3 %}
+<div class="container-fluid" style="opacity: 0.2">
+{% endif %}
+    {% if value == 2 %}
+<div class="container-fluid" style="opacity: 0.2">
+    {% elif value == 1 %}
+        <div class="container-fluid">
+    {% else %}
+        <div class="container-fluid">
+    {% endif %}
+<div class="clear1"></div>
+<div class="clear1"></div>
+
+      <div class="col-sm-3">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color:#adebad;">
+                        <h4 class="panel-title" title="Click here to select the sub-category">
+                            <a data-toggle="collapse" href="#collapse1">Filter On Sub-Category</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+
+                        <ul class="list-group" >
+                            {% for subcategory in all_subcategory  %}
+                                <li class="list-group-item"><a href="{% url 'subcategorypage'  subcategory.pk %} ">{{ subcategory.cname }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+        </div>
+        </div>
+        <div class="col-sm-9 " id="cart">
+           <!-- <div class="container">
+           <!-- <div class="row">-->
+
+                     {% for medicines in all_medicines %}
+                        <div class="col-xs-4 col-sm-4" style=" padding:12px 0px 0px 12px; width:auto " >
+                            <div class="cater-list-items w3-card-4" style="z-index: 20" >
+                                <div class="med_names">
+                                    {{medicines.name}}
+                                </div>
+                                <div class="med-image">
+                                    <img src="{{medicines.image.url}}">
+                                </div>
+                                <div class="thumbnail">
+                                    <div class="med-rate">Price :{{ medicines.price }}</div><br>
+                                    <div class="med-formulation">Formulation :{{ medicines.formulation}}</div><br>
+                                    <div>
+                                        <form id="quant_form" method="POST" action="{% url 'addtocart'  medicines.pk %}">{% csrf_token %}
+
+                                            <label>Quantity</label>
+                                            <br><br>
+                                            <input type="number" value="quantity" min=1 name="quantity"><br>
+                                            <br>
+                                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                                            
+                                            <input type="submit" value="ADD TO CART">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div><br>
+                        </div>
+                     {% endfor %}
+            </div>
+    </div>
+    <!--</div>
+</div>-->
+      <div class="clear1"></div>
+    <div class="clear1"></div>
+{% endblock %}

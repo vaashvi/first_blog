@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+{% load staticfiles %}
+  <style>
+  body {
+      position: relative;
+  }
+  #section1 {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
+  #section2 {padding-top:50px;height:500px;color: #fff; background-color: #673ab7;}
+  #section3 {padding-top:50px;height:500px;color: #fff; background-color: #ff9800;}
+  #section41 {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
+  #section42 {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
+
+
+#sub{
+
+ font-family: "Roboto",Arial;
+ font-style:normal;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 19px;
+
+  cursor: pointer;
+}
+body {
+font-family: "Lato", sans-serif;
+ font-style: normal;
+}
+
+header,main,article,nav,time,aside,footer,small {
+display:block;
+}
+
+.mySlides {
+display: none;
+z-index: -1;
+position:relative;
+
+  }
+
+.mySlides1 {
+display:none;
+z-index: -1;
+
+
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+
+	padding: 0px 0px 0px 46px;
+    margin: auto;
+    position: relative
+
+}
+
+
+
+#sub:hover,#sub:active,#sub:focus {
+  background: #43A047;
+  }
+  </style>
+</head>
+<img class="w3-right" src="{% static "promeds\images\ProMed_WebLogo.png" %}"
+ alt="ProMeds.com"/>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-inverse navbar-fixed-top primary">
+  <div class="container-fluid">
+    <div class="navbar-header">
+
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#section1" class="selected">Home</a></li>
+          <li><a href="#section2">About Us</a></li>
+          <li><a href="#section3">Features</a></li>
+            <li><a href="#section4">Login</a></li>
+            <li><a href="#section5">Developers</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div id="section1" class="container-fluid">
+  <h1>Section 1</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section2" class="container-fluid">
+  <h1>Section 2</h1>
+
+  <div class="mySlides w3-display-container" >
+    <img class="slide" src="{% static  "promeds\images\see.jpg" %}"	style="width:100%" >
+    <div class="w3-display-bottommiddle w3-container w3-text-green w3-padding-32 w3-hide-small">
+	<h1>	ProMeds	</h1>
+      <p><b><h4>Reaching out to the community.</h4></b></p>
+    </div>
+
+  </div>
+  <div class="mySlides w3-display-container">
+    <img class="slide" src="{% static "promeds\images\ss.jpg" %}" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-green w3-padding-32 w3-hide-small">
+      <h1>ProMeds</h1>
+      <p><b><h4>Catering to the essentail needs</h4></b></p>
+    </div>
+  </div>
+
+  <div class="mySlides w3-display-container">
+    <img class="slide" src="{% static "promeds\images\gg.jpg" %}" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-green w3-padding-32 w3-hide-small">
+      <h1>ProMeds</h1>
+      <p><b><h4>We care for You.</h4></b></p>
+    </div>
+  </div>
+
+  <div class="mySlides w3-display-container">
+    <img class="slide" src="{% static "promeds\images\ba1.jpg" %}"  style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-green w3-padding-32 w3-hide-small">
+      <h1>ProMeds</h1>
+      <p><b><h4>You're in good hands!</h4></b></p>
+    </div>
+  </div>
+
+<div class="w3-row-padding">
+
+
+<div class="w3-half">
+
+  <h2 class="w3-wide">PROMEDS</h2>
+
+   <p class="w3-opacity"><i>We care </i></p>
+  <p class="w3-justify">India's Leading Brand for Health Care.</p>
+  <p class="w3-justify">Delivery at your step made easy!</p>
+  <p class="w3-justify">An uncomplicated diagnostic booth both for inpatient and outpatient treatment. </p>
+  <p class="w3-justify">A healthy diet and lifestyle are your best weapons to fight against cardiovascular disease. Today Heart disease may be the leading killer for men and women, but it doesn’t mean you can’t protect yourself. In addition to exercise, being careful about what you eat, and what you don’t eat. There are various causes for the heart disease such as ageing, genetics, lifestyle, smoking, diabetes.
+Improving your diet is an important step towards preventing heart disease. A person should eat a little bit of lots of different types of food for good heath since no one food has everything in it that your body requires</p>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+<div id="section3" class="container-fluid">
+  <h1>Section 3</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+<div id="section4" class="container-fluid">
+    div class="w3-half w3-center">
+
+  <h1 class="w3-wide">CONTACT US</h1>
+   <p class="w3-opacity"><i><h2>Here you go</h2></i></p><br>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form" action="{% url 'login' %}" method='POST'> {% csrf_token %}
+                <input type="text" placeholder="username" name="username"/>
+                <input type="password" placeholder="password" name="password"/>
+                <input type="submit" id="sub" value="LOGIN"/>
+                <p class="message">Not registered? <a href="{% url 'createaccount' %}">Create an account</a></p>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+</div>
+<div id="section5" class="container-fluid">
+  <h1>Section 4 Submenu 2</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+$('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,128 @@
+{% extends 'promeds/base_template.html' %}
+{% block styles %}
+    .clear1 {
+    clear: both;
+    height: 30px;
+    }
+    #rcorners1 {
+    border-radius: 25px;
+    background:#B0E0E6;
+    padding: 20px;
+     <!--box-shadow: 10px 10px 5px #888888;-->
+    }
+    .clear2 {
+    clear: both;
+    height: 10px;
+
+    }
+    .box:hover {
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+    }
+.invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
+{% endblock %}
+{% block body1 %}
+
+
+
+    <div class="clear1"></div>
+    <div class="clear1"></div>
+<div class="container-fluid">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+    <div class="w3-card-4 w3-white" style="z-index: 20">
+    <div class="row">
+        <div class="col-xs-12">
+    		<div class="invoice-title">
+    			<h2>Invoice</h2><h3 class="pull-right">Order # {{ app.pk | add:"1000"}}</h3>
+    		</div>
+    		<hr>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    				<strong>Billed To: </strong>
+    					{{ user.username }}
+    				</address><br>
+    			</div>
+
+    		</div>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    					<strong>Payment Method:</strong>
+    					CASH ON DELIVERY
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+    					<strong>Appointment Date:</strong>
+    					{{ app.date_app1 }}<br><br>
+    				</address>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title"><strong>Order summary</strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-responsive">
+    					<table class="table table-condensed">
+    						<thead>
+                                <tr>
+        							<td><strong>Test</strong></td>
+
+        							<td class="text-center"><strong>Price</strong></td>
+                                </tr>
+    						</thead>
+    						<tbody>
+    							<!-- foreach ($order->lineItems as $line) or some such thing here -->
+                                {%  for t in all_test %}
+                                <tr>
+                                    {% for a in x %}
+                                        {% if  t.name  ==  a.storetest  %}
+
+                                            <td>{{ t.name }}</td>
+                                            <td class="text-center">{{ t.price }}</td>
+
+                                        {%  endif %}
+                                 {%  endfor %}
+                                </tr>
+                            {%  endfor %}
+
+                                <tr>
+    								<td class="no-line text-center"><strong>Total</strong></td>
+
+    								<td class="no-line text-center">{{ t2 }}</td>
+    							</tr>
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</div>
+</div></div>
+<div class="col-sm-2"></div>
+
+{% endblock %}

@@ -1,0 +1,207 @@
+{% extends 'promeds/base_template.html' %}
+{% load staticfiles %}
+{% block styles %}
+   .btn{
+    border-radius:0;
+        font-family: 'Open Sans Condensed', sans-serif, sans-serif;
+        margin-bottom:15px;
+
+    }
+
+.primary-bg{
+    background-color:#1f7a7a;
+    color:#fff;
+    }
+
+.primary-bg:hover, .primary-bg:focus{
+    background-color:#1F7A7A;
+    color:#fff;
+    }
+.secondary-bg{
+    background-color:#1f7a7a;
+    color:#fff;
+    }
+
+.secondary-bg:hover, secondary-bg:focus{
+    background-color:#1f7a7a;
+    color:#fff;
+    }
+
+.about {
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  padding-top: 100px ;
+  border-top:1px solid #ddd;
+}
+.about .fig-profile {
+  max-width: 200px;
+  max-height: 200px;
+  margin: 0 auto 0;
+  position: relative;
+  overflow: hidden !important;
+  border: 12px solid #fff;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+.about .fig-profile:hover figcaption {
+  opacity: 1;
+  webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  background-color: #1f7a7a;
+}
+.about .fig-profile figcaption {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: center;
+  line-height: 180px;
+  opacity: 0;
+  font-family: 'Open Sans Condensed', sans-serif;
+  height: 100%;
+  webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  color: #fff;
+  font-size: 24px;
+}
+.about .name {
+  font-size: 48px;
+  text-transform: uppercase;
+  margin: 20px 0 0 0;
+}
+
+.about .caption{
+    font-size:16px;
+    }
+.about .email {
+  margin: 0;
+  font-size: 48px;
+}
+.about .extra {
+  margin: 5px 0 20px 0;
+}
+.about p {
+  font-size: 16px;
+}
+.container-fluid-1{
+  margin : 0;
+    width:100%;
+    height:100%;
+  padding:0;
+}
+
+#proper{
+  position:absolute;
+  top:0px;
+  left:0px;
+  bottom: 0px;
+  right: 0px;
+  width:100%;
+  z-index:-1;
+  opacity: 0.5;
+}
+
+.title-divider {
+  margin: 0 auto;
+  max-width: 400px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  padding: 10px 0;
+}
+.hr-divider {
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  float: left;
+  bottom: -4px;
+}
+.icon-separator {
+  float: left;
+  text-align: center;
+  margin-top: -7px;
+  font-size: 18px;
+  color: #1f7a7a;
+  padding: 0;
+}
+.heading-divider {
+  margin-bottom: 40px;
+  margin-top: 30px;
+  display: flex;
+}
+.heading-divider .title {
+  flex-grow: 0;
+  -webkit-flex-grow: 0;
+  margin: 0 5px 0 0;
+  line-height: 1px;
+}
+.heading-divider .line-separator {
+  border-bottom: 1px solid #1f7a7a;
+  border-top: 1px solid #1f7a7a;
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
+  height: 6px;
+  position: relative;
+}
+#prologuebox{
+    margin-top: 40px;
+    background-color: white;
+}
+
+#prologuepic{
+    height: 400px;
+    width: 300px;
+    margin-left: 0;
+}
+
+
+{% endblock %}
+
+{% block body1 %}
+    <div class="container-fluid-1">
+
+ <section id="about" class="section-content about">
+        <div class="container-fluid">
+        	<div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                <figure class="fig-profile wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                	{% if profiles %}
+                        <img class="img-responsive img-circle img-profile" src="{{ profiles.profilepic.url }}">
+                    {% else %}
+                        <img class="img-responsive img-circle img-profile" src="{% static 'promeds/images/blank-profile-picture.png' %}">
+                    {% endif %}
+                    </figure>
+                    <div class="clearfix"></div>
+
+                    <h2 class="name"><b>{{user.username}}</b></h2>
+                    <h3 class="email">{{user.email}}</h3>
+                    <div class="title-divider">
+                        <span class="hr-divider col-xs-5"></span>
+                        <span class="icon-separator col-xs-2"><i class="fa fa-star"></i></span>
+                        <span class="hr-divider col-xs-5"></span>
+                    </div>
+                    {% if profiles %}
+
+                        <h2>Contact_no :{{profiles.contact_no}}</h2>
+                         <h2>Blood Group :{{profiles.blood_group}}</h2>
+                        <h2>Address :{{ profiles.address }}</h2>
+                    {% endif %}
+
+
+                </div>
+
+                <div class="col-md-8 col-md-offset-2 text-center">
+                <a href="{% url 'profileedit' %}" class="btn btn-default secondary-bg btn-lg">Edit profile</a>
+
+                </div>
+            </div>
+        </div>
+</section>
+                </div>
+{% endblock %}

@@ -1,0 +1,350 @@
+{% extends 'promeds/base_template.html' %}
+{% block styles %}
+.clear1 {
+    clear: both;
+    height: 20px;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, sans-serif;
+}
+body {
+      background: #25b7c4;
+    background: linear-gradient(to right, #25c481, #25b7c4);
+    font-family: 'Roboto', sans-serif;
+
+}
+section#timeline {
+  width: auto;
+  margin: 20px auto;
+  position: relative;
+}
+section#timeline:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin: 0 0 0 -1px;
+  width: 2px;
+  height: 100%;
+  background: rgba(255,255,255,0.3);
+}
+section#timeline article {
+  width: 100%;
+  margin: 0 0 20px 0;
+  position: relative;
+}
+section#timeline article:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+section#timeline article div.inner {
+  width: 40%;
+  float: left;
+  margin: 5px 0 0 0;
+  border-radius: 6px;
+}
+section#timeline article div.inner span.date {
+  display: block;
+  width: 60px;
+  height: 50px;
+  padding: 5px 0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin: 0 0 0 -32px;
+  border-radius: 100%;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: #25303B;
+  color: rgba(255,255,255,0.5);
+  border: 2px solid rgba(255,255,255,0.2);
+  box-shadow: 0 0 0 7px #25303B;
+}
+section#timeline article div.inner span.date span {
+  display: block;
+  text-align: center;
+}
+section#timeline article div.inner span.date span.day {
+  font-size: 10px;
+}
+section#timeline article div.inner span.date span.month {
+  font-size: 18px;
+}
+section#timeline article div.inner span.date span.year {
+  font-size: 10px;
+}
+section#timeline article div.inner h2 {
+  padding: 15px;
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  border-radius: 6px 6px 0 0;
+  position: relative;
+}
+section#timeline article div.inner h2:after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: -5px;
+  	width: 10px;
+	  height: 10px;
+  -webkit-transform: rotate(-45deg);
+}
+section#timeline article div.inner p {
+  padding: 15px;
+  margin: 0;
+  font-size: 14px;
+  background: #fff;
+  color: #656565;
+  border-radius: 0 0 6px 6px;
+}
+section#timeline article:nth-child(2n+2) div.inner {
+  float: right;
+}
+section#timeline article:nth-child(2n+2) div.inner h2:after {
+  left: -5px;
+}
+section#timeline article:nth-child(1) div.inner h2 {
+  background: #e74c3c;
+}
+section#timeline article:nth-child(1) div.inner h2:after {
+  background: #e74c3c;
+}
+section#timeline article:nth-child(2) div.inner h2 {
+  background: #2ecc71;
+}
+section#timeline article:nth-child(2) div.inner h2:after {
+  background: #2ecc71;
+}
+section#timeline article:nth-child(3) div.inner h2 {
+  background: #e67e22;
+}
+section#timeline article:nth-child(3) div.inner h2:after {
+  background: #e67e22;
+}
+section#timeline article:nth-child(4) div.inner h2 {
+  background: #1abc9c;
+}
+section#timeline article:nth-child(4) div.inner h2:after {
+  background: #1abc9c;
+}
+section#timeline article:nth-child(5) div.inner h2 {
+  background: #9b59b6;
+}
+section#timeline article:nth-child(5) div.inner h2:after {
+  background: #9b59b6;
+}
+section#timeline article:nth-child(6) div.inner h2 {
+  background: #9b59b6;
+}
+section#timeline article:nth-child(6) div.inner h2:after {
+  background: #9b59b6;
+}
+
+
+.sub-content>.sub-content-title {
+    position: relative;
+    padding-bottom: 4px;
+    margin-bottom: 28px;
+}
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.sub-content>.sub-content-title>.sub-content-decor>.circle {
+    width: 6px;
+    height: 6px;
+    border: 1px solid #0f9ea5;
+    border-radius: 4px;
+}
+
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.image img {
+    -webkit-transition: all 1s ease; /* Safari and Chrome */
+    -moz-transition: all 1s ease; /* Firefox */
+    -ms-transition: all 1s ease; /* IE 9 */
+    -o-transition: all 1s ease; /* Opera */
+    transition: all 1s ease;
+}
+
+.image:hover img {
+    -webkit-transform:scale(1.15); /* Safari and Chrome */
+    -moz-transform:scale(1.15); /* Firefox */
+    -ms-transform:scale(1.15); /* IE 9 */
+    -o-transform:scale(1.15); /* Opera */
+     transform:scale(1.15);
+}
+.verticalLine {
+    border-left: thick solid #ff0000;
+}
+{% endblock %}
+{% block body1 %}
+{% load staticfiles %}
+    <div class="clear1"></div>
+    <div class="clear1"></div>
+<div class="container-fluid">
+<div class="col-sm-1"></div>
+<div class="col-sm-4">
+
+<h2 style ="color: white">How To Order Medicine</h2>
+<section id="timeline">
+  <article>
+    <div class="inner">
+      <span class="date">
+            <div style="z-index:1;font-size:30px;text-align:center;margin-bottom: 10px">1</div>
+      </span>
+      <h2>Search Medicine</h2>
+      <p class="image"><img src="{% static "promeds/images/search.png" %}"></p>
+    </div>
+  </article>
+
+ <article>
+    <div class="inner">
+      <span class="date">
+           <div style="z-index:1;font-size:30px;text-align:center;margin-bottom: 10px">2</div>
+        </span>
+      <h2>Add To Cart</h2>
+      <p class="image"><img src="{% static "promeds/images/add-to-cart.png" %}"></p>
+    .
+    </div>
+  </article>
+  <article>
+    <div class="inner">
+      <span class="date">
+           <div style="z-index:1;font-size:30px;text-align:center;margin-bottom: 10px">3</div>
+        </span>
+      <h2>Attach Prescription wherever needed</h2>
+      <p class="image"><img src="{% static "promeds/images/upload-rx.png" %}"></p>
+    .
+    </div>
+  </article>
+    <article>
+    <div class="inner">
+      <span class="date">
+ <div style="z-index:1;font-size:30px;text-align:center;margin-bottom: 10px">4</div>
+      </span>
+      <h2>Review & Confirm Order</h2>
+      <p class="image"><img src="{% static "promeds/images/confirm.jpg" %}"></p>
+    </div>
+  </article>
+
+
+  <article>
+    <div class="inner">
+      <span class="date">
+           <div style="z-index:1;font-size:30px;text-align:center;margin-bottom: 10px">5</div>
+        </span>
+      <h2>Order Passed to trusted Pharmacy</h2>
+      <p class="image"><img src="{% static "promeds/images/trusted.png" %}"></p>
+
+    </div>
+  </article>
+  <article>
+    <div class="inner">
+      <span class="date">
+           <div style="z-index:1;font-size:30px;text-align:center;margin-bottom: 10px">6</div>
+        </span>
+      <h2>Pay the Delivery Guy</h2>
+      <p class="image"><img src="{% static "promeds/images/pay.png" %}"></p>
+
+    </div>
+  </article>
+
+
+
+
+
+</section>
+</div>
+
+    <div class="col-sm-2"></div>
+    <div class="verticalLine">
+
+<div class="col-sm-4">
+    <h2 style="color: white">How To Book Diagnostic Tests</h2>
+  <section id="timeline">
+  <article>
+    <div class="inner">
+      <span class="date">
+ <div style="z-index:1;font-size:30px;text-align:center;margin-bottom: 10px">1</div>
+      </span>
+      <h2>Search Tests</h2>
+      <p class="image"><img src="{% static "promeds/images/searchtest.jpg" %}"></p>
+    </div>
+  </article>
+
+ <article>
+    <div class="inner">
+      <span class="date">
+           <div style="z-index:1;font-size:30px;text-align:center;margin-bottom: 10px">2</div>
+        </span>
+      <h2>Select Laboratory</h2>
+      <p class="image"><img src="{% static "promeds/images/lab.png" %}"></p>
+
+    </div>
+  </article>
+  <article>
+    <div class="inner">
+      <span class="date">
+           <div style="z-index:1;font-size:30px;text-align:center;margin-bottom: 10px">3</div>
+        </span>
+      <h2>Select Date & Time</h2>
+      <p class="image"><img src="{% static "promeds/images/Date-And-Time-Rounded-Icon.jpg" %}"></p>
+
+    </div>
+  </article>
+  <article>
+    <div class="inner">
+      <span class="date">
+           <div style="z-index:1;font-size:30px;text-align:center;margin-bottom: 10px">4</div>
+        </span>
+      <h2>Review & Confirm Test</h2>
+      <p class="image"><img src="{% static "promeds/images/confirm.jpg" %}"></p>
+
+    </div>
+  </article>
+  <article>
+    <div class="inner">
+      <span class="date">
+           <div style="z-index:1;font-size:30px;text-align:center;margin-bottom: 10px">5</div>
+        </span>
+      <h2>Appointment passed to trusted laboratory</h2>
+      <p class="image"><img src="{% static "promeds/images/trusted.png" %}"></p>
+
+    </div>
+  </article>
+
+<article>
+    <div class="inner">
+      <span class="date">
+           <div style="z-index:1;font-size:30px;text-align:center;margin-bottom: 10px">6</div>
+      </span>
+      <h2>Pay the delivery guy</h2>
+      <p class="image"><img src="{% static "promeds/images/pay.png" %}"></p>
+    </div>
+  </article>
+
+
+
+</section>
+
+
+
+
+</div>
+</div>
+</div>
+{% endblock %}
