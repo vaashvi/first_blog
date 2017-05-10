@@ -385,32 +385,32 @@ def deleteorders(request,bill_id,order_id):
     return render(request, 'promeds/history.html',{'app': app,'bills': bills, 'bills1': bills1, 'medss': medss, 'med': med, 'tabletss': tabletss, 'tab': tab,'value':value})
 
 def deleteorder_test(request,test_id):
-    app=appointment.objects.get(pk=test_id)
-    print(app.Date_of_booking.day)
-    print (app.Date_of_booking.month)
-    today = datetime.datetime.today()
-    m = today.month - app.Date_of_booking.month
-    print (m)
-    if ( m >= 0):
-        c= app.Date_of_booking.day-(today.day)
-    else:
-        c=today.day-app.Date_of_booking.day
+	    app=appointment.objects.get(pk=test_id)
+	    print(app.Date_of_booking.day)
+	    print (app.Date_of_booking.month)
+	    today = datetime.datetime.today()
+	    m = today.month - app.Date_of_booking.month
+	    print (m)
+	    if ( m >= 0):
+		c= app.Date_of_booking.day-(today.day)
+	    else:
+		c=today.day-app.Date_of_booking.day
 
-    print (c)
-    if c==1 or -1:
-        app.delete()
-        value=1
-    else :
-        value=2
-		
-    app=appointment.objects.filter(User_name=request.user)
-    bills = bill.objects.filter(userr=request.user)
-    bills1 = billmed.objects.filter(users=request.user)
-    medss = order.objects.filter(User_name=request.user)
-    med = Medicines.objects.all()
-    tabletss = orderTab.objects.filter(User_name=request.user)
-    tab = Tablets.objects.all()
-    return render(request,'promeds/history.html',{'bills': bills, 'bills1': bills1, 'medss': medss, 'med': med, 'tabletss': tabletss, 'tab': tab,'value':value,'app':app})
+	    print (c)
+	    if c==1 or -1:
+		app.delete()
+		value=1
+	    else :
+		value=2
+
+	    app=appointment.objects.filter(User_name=request.user)
+	    bills = bill.objects.filter(userr=request.user)
+	    bills1 = billmed.objects.filter(users=request.user)
+	    medss = order.objects.filter(User_name=request.user)
+	    med = Medicines.objects.all()
+	    tabletss = orderTab.objects.filter(User_name=request.user)
+	    tab = Tablets.objects.all()
+	    return render(request,'promeds/history.html',{'bills': bills, 'bills1': bills1, 'medss': medss, 'med': med, 'tabletss':tabletss, 'tab': tab,'value':value,'app':app})
 
 def deletetest(request,test1_id):
     ctest=checktest.objects.filter(User_name=request.user).filter(test_id = test1_id)
