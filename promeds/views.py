@@ -25,8 +25,7 @@ class UserFormView(View):
   form_class = UserForm
 template_name = 'promeds/trialregform.html'
 
-#
-display a blank form
+#display a blank form
 def get(self, request):
   form = self.form_class(None)
 return render(request, self.template_name, {
